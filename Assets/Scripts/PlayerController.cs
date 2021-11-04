@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator anim;
     public float speed;
     public float jumpForce;
     public float gravity = -20;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+        anim.SetBool("Jump", !controller.isGrounded);
 
         //jump
         if(controller.isGrounded){
