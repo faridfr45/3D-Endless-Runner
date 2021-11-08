@@ -80,4 +80,10 @@ public class PlayerController : MonoBehaviour
     private void Jump(){
         direction.y = jumpForce;
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit) {
+        if(hit.transform.tag == "Obstacle"){
+            PlayerManager.gameOver = true;
+        }
+    }
 }

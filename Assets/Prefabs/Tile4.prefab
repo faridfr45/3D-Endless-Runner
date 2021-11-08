@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 6721281694054596582}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 1531107602288646481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.3, y: 0.53, z: -0.05}
-  m_LocalScale: {x: 4.796612, y: 1, z: 1}
+  m_LocalScale: {x: 4.796612, y: 2.1882, z: 1}
   m_Children: []
   m_Father: {fileID: 5529432802476390637}
   m_RootOrder: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 2859548049986580979}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 6872453786502929212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.93, y: 0.53, z: -0.05}
-  m_LocalScale: {x: 4.796612, y: 1, z: 1}
+  m_LocalScale: {x: 4.796612, y: 2.3736, z: 1}
   m_Children: []
   m_Father: {fileID: 523278548827199372}
   m_RootOrder: 0
