@@ -23,7 +23,9 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        
+        if(!PlayerManager.isGameStarted)
+            return;
+
         anim.SetBool("Jump", !controller.isGrounded);
 
         //jump
@@ -74,6 +76,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if(!PlayerManager.isGameStarted)
+            return;
         controller.Move(direction * Time.fixedDeltaTime);
     }
 
