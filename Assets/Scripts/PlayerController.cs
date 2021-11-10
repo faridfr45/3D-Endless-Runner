@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
         if(!PlayerManager.isGameStarted)
             return;
 
-        anim.SetBool("Jump", !controller.isGrounded);
+        anim.SetBool("isGameStarted", true);
+        anim.SetBool("isJump", !controller.isGrounded);
 
         //jump
         if(controller.isGrounded){
