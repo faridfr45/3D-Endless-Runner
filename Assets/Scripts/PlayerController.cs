@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public Animator anim;
     public float speed;
+    [SerializeField] private float maxSpeed;
     public float jumpForce;
     public float gravity = -20;
+    private bool isSliding;
 
     private CharacterController controller;
     private Vector3 direction;
@@ -29,12 +31,22 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isGameStarted", true);
         anim.SetBool("isJump", !controller.isGrounded);
 
-        //jump
+        //speed increase by time
+        if(speed < maxSpeed)
+            speed += 0.03f * Time.deltaTime;
+
         if(controller.isGrounded){
             direction.y = -1;
-            if(Input.GetKeyDown(KeyCode.W) || SwipeManager.swipeUp)
+
+            //jump
+            if((Input.GetKeyDown(KeyCode.W) || SwipeManager.swipeUp) && !isSliding)
             {
                 Jump();
+            }
+
+            //slide
+            if(Input.GetKeyDown(KeyCode.S) || SwipeManager.swipeDown){
+                StartCoroutine(Slide());
             }
         }else{
             direction.y += gravity * Time.deltaTime;
@@ -84,6 +96,26 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(){
         direction.y = jumpForce;
+    }
+
+    private IEnumerator Slide(){
+        isSliding = true;
+        anim.SetBool("isSliding", isSliding);
+
+        yield return new WaitForSeconds(0.2f);
+
+        controller.center = new Vector3(0, 0.7f, 0);
+        controller.height = 1.5f;
+
+        yield return new WaitForSeconds(0.3f);
+        isSliding = false;
+        
+        yield return new WaitForSeconds(0.5f);
+
+        controller.center = new Vector3(0, 1.5f, 0);
+        controller.height = 3;
+
+        anim.SetBool("isSliding", isSliding);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
