@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if(!PlayerManager.isGameStarted)
+        if(!GameManager.isGameStarted)
             return;
 
         anim.SetBool("isGameStarted", true);
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if(!PlayerManager.isGameStarted)
+        if(!GameManager.isGameStarted)
             return;
         controller.Move(direction * Time.fixedDeltaTime);
     }
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         if(hit.transform.tag == "Obstacle"){
-            PlayerManager.gameOver = true;
+            GameManager.gameOver = true;
         }
     }
 }
