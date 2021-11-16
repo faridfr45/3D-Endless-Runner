@@ -5,17 +5,13 @@ using UnityEngine;
 public class CoinGold : MonoBehaviour
 {
     private void OnEnable() {
-        this.gameObject.SetActive(true);
-    }
-
-    private void Start() {
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
             GameManager.coinValue++;
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
     void Update()
