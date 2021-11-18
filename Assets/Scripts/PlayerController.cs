@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
             speed += 0.03f * Time.deltaTime;
 
         if(controller.isGrounded){
-            direction.y = -1;
 
             //jump
             if((Input.GetKeyDown(KeyCode.W) || SwipeManager.swipeUp) && !isSliding)
@@ -85,13 +84,6 @@ public class PlayerController : MonoBehaviour
         }
 
         controller.Move(direction * Time.deltaTime);
-
-    }
-
-    private void FixedUpdate() {
-        if(!GameManager.isGameStarted)
-            return;
-        controller.Move(direction * Time.fixedDeltaTime);
     }
 
     private void Jump(){

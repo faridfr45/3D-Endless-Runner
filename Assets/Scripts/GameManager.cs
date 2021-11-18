@@ -14,8 +14,15 @@ public class GameManager : MonoBehaviour
     public static bool isGameStarted;
     public GameObject startingText;
 
+    
+    [Header("Score")]
+    [SerializeField]private Text scoreText;
+    public float scoreRate;
+    public static float scoreValue;
+    
     private void Start() {
         coinValue = 0;
+        scoreValue = 0;
 
         gameOver = false;
         isGameStarted = false;
@@ -24,6 +31,10 @@ public class GameManager : MonoBehaviour
 
     private void Update() {
         coinText.text = coinValue.ToString();
+        scoreText.text = Mathf.Round(scoreValue).ToString();
+
+        if(isGameStarted)
+            scoreValue += scoreRate * Time.deltaTime;
 
         if(gameOver){
             Time.timeScale = 0;
