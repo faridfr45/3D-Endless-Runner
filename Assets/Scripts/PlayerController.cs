@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if(!GameManager.isGameStarted)
+        if(!GameManager.Instance.isGameStarted)
             return;
 
         anim.SetBool("isGameStarted", true);
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         if(hit.transform.tag == "Obstacle"){
-            GameManager.gameOver = true;
+            GameManager.Instance.gameOver = true;
         }
     }
 }

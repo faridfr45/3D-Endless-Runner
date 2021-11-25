@@ -5,20 +5,35 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static float coinValue;
+    private static GameManager _instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<GameManager>();
+            }
+
+            return _instance;
+        }
+    }
+
+    public float coinValue;
     public Text coinText;
 
-    public static bool gameOver;
+    public bool gameOver;
     public GameObject gameOverPanel;
 
-    public static bool isGameStarted;
+    public bool isGameStarted;
     public GameObject startingText;
 
     
     [Header("Score")]
     [SerializeField]private Text scoreText;
     public float scoreRate;
-    public static float scoreValue;
+    public float scoreValue;
     
     private void Start() {
         coinValue = 0;
