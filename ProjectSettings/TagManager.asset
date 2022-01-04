@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - PU_DoubleScore
   - DoubleScore
+  - Senter
   layers:
   - Default
   - TransparentFX

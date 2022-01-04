@@ -8,6 +8,10 @@ public class PowerUpManager : MonoBehaviour
     [Header("Double Score")]
     public PowerUpData doubleScore = new PowerUpData();
 
+    [Header("Flashlight")]
+    public GameObject modelSenter;
+    public PowerUpData senter = new PowerUpData();
+
     private void Update() {
         if(doubleScore.isActive){
             doubleScore.timer -= Time.deltaTime;
@@ -25,6 +29,10 @@ public class PowerUpManager : MonoBehaviour
             other.gameObject.SetActive(false);
             DoubleScore();
         }
+        if(other.transform.tag == "Senter"){
+            other.gameObject.SetActive(false);
+            Senter();
+        }
     }
 
     private void DoubleScore(){
@@ -36,6 +44,17 @@ public class PowerUpManager : MonoBehaviour
 
         if(doubleScore.timer > doubleScore.duration)
             doubleScore.timer = doubleScore.duration;
+    }
+
+    private void Senter(){
+        if(!senter.isActive){
+            modelSenter.SetActive(true);
+            senter.isActive = true;
+        }
+        senter.timer += doubleScore.duration;
+
+        if(senter.timer > senter.duration)
+            senter.timer = senter.duration;
     }
 
     [System.Serializable]

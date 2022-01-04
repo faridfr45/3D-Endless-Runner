@@ -43,7 +43,7 @@ public class ObjectPooler : MonoBehaviour
     }
 
     private void Update() {
-        if(playerTransform.position.z - 35> _zSpawn - (numberOfTiles * tileLength)){
+        if(playerTransform.position.z - 50> _zSpawn - (numberOfTiles * tileLength)){
             GenerateTile();
             DeleteTile();
         }

@@ -20,20 +20,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [Header("UI Coin")]
+    [SerializeField] private GameObject coinObject;
     public float coinValue;
     public Text coinText;
 
+    [Header("UI Game Over")]
     public bool gameOver;
-    public GameObject gameOverPanel;
+    [SerializeField] private GameObject gameOverPanel;
 
+    [Header("UI Starting")]
     public bool isGameStarted;
-    public GameObject startingText;
+    [SerializeField] private GameObject startingText;
+
+    [Header("UI Pause")]
+    [SerializeField] private GameObject pauseButton;
+    [SerializeField] private GameObject pausePanel;
 
     
     [Header("Score")]
     [SerializeField]private Text scoreText;
+    [SerializeField]private Text finishScore;
+    [SerializeField]private Text highScoreText;
     public float scoreRate;
     public float scoreValue;
+    public float highScore;
     
     private void Start() {
         coinValue = 0;
@@ -42,23 +53,58 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         isGameStarted = false;
         Time.timeScale = 1;
+        HideUI();
     }
 
     private void Update() {
         coinText.text = coinValue.ToString();
         scoreText.text = Mathf.Round(scoreValue).ToString();
 
-        if(isGameStarted)
+        if(isGameStarted){
             scoreValue += scoreRate * Time.deltaTime;
+            ShowUI();
+        }
 
         if(gameOver){
             Time.timeScale = 0;
+            finishScore.text = Mathf.Round(scoreValue).ToString();
+            setHighScore();
+            highScoreText.text = Mathf.Round(highScore).ToString();
             gameOverPanel.SetActive(true);
+            HideUI();
         }
 
         if(SwipeManager.tap){
             isGameStarted = true;
             Destroy(startingText);
         }
+    }
+
+    private void setHighScore(){
+        if(scoreValue > highScore){
+            highScore = scoreValue;
+        }
+    }
+
+    public void PauseGame(){
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
+    }
+
+    public void ResumeGame(){
+        Time.timeScale = 1;
+        pausePanel.SetActive(false);
+    }
+
+    private void HideUI(){
+        coinObject.SetActive(false);
+        pauseButton.SetActive(false);
+        scoreText.enabled = false;
+    }
+
+    private void ShowUI(){
+        coinObject.SetActive(true);
+        pauseButton.SetActive(true);
+        scoreText.enabled = true;
     }
 }
