@@ -22,6 +22,16 @@ public class PowerUpManager : MonoBehaviour
                 doubleScore.timer = 0;
             }
         }
+
+        if(senter.isActive){
+            senter.timer -= Time.deltaTime;
+            
+            if(senter.timer <= 0){
+                senter.isActive = false;
+                modelSenter.SetActive(false);
+                senter.timer = 0;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other) {

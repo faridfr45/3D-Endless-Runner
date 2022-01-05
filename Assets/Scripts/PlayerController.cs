@@ -98,12 +98,10 @@ public class PlayerController : MonoBehaviour
 
         controller.center = new Vector3(0, 0.7f, 0);
         controller.height = 1.5f;
-
-        yield return new WaitForSeconds(0.3f);
-        isSliding = false;
         
         yield return new WaitForSeconds(0.5f);
 
+        isSliding = false;
         controller.center = new Vector3(0, 1.5f, 0);
         controller.height = 3;
 
