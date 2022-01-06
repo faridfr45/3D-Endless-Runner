@@ -7,6 +7,10 @@ public class Events : MonoBehaviour
         SceneManager.LoadScene("Gameplay");
     }
 
+    public void MainMenu(){
+        SceneManager.LoadScene("Main Menu");
+    }
+
     public void QuitGame(){
         Application.Quit();
     }
