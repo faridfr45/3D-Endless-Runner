@@ -22,6 +22,7 @@ public class CoinGold : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
             GameManager.Instance.coinValue++;
+            SoundManager.Instance.Play("Coin");
             mer.enabled = false;
             col.enabled = false;
         }

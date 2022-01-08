@@ -88,11 +88,13 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(){
         direction.y = jumpForce;
+        SoundManager.Instance.Play("Jump");
     }
 
     private IEnumerator Slide(){
         isSliding = true;
         anim.SetBool("isSliding", isSliding);
+        SoundManager.Instance.Play("Jump");
 
         yield return new WaitForSeconds(0.2f);
 

@@ -46,6 +46,7 @@ public class PowerUpManager : MonoBehaviour
     }
 
     private void DoubleScore(){
+        SoundManager.Instance.Play("Power");
         if(!doubleScore.isActive){
             GameManager.Instance.scoreRate *= 2;
             doubleScore.isActive = true;
@@ -57,6 +58,7 @@ public class PowerUpManager : MonoBehaviour
     }
 
     private void Senter(){
+        SoundManager.Instance.Play("Power");
         if(!senter.isActive){
             modelSenter.SetActive(true);
             senter.isActive = true;
