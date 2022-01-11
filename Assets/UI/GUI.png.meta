@@ -12,7 +12,7 @@ TextureImporter:
     21300014: Button_round
     21300016: GUI_8
     21300018: GUI_9
-    21300020: GUI_10
+    21300020: Button_square_long_Pressed
     21300022: Button_square_long
     21300024: GUI_12
     21300026: GUI_13
@@ -50,7 +50,7 @@ TextureImporter:
     21300090: GUI_45
     21300092: Button_square_short
     21300094: GUI_47
-    21300096: GUI_48
+    21300096: Arrow
     21300098: GUI_49
     21300100: GUI_50
     21300102: GUI_51
@@ -357,7 +357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_10
+      name: Button_square_long_Pressed
       rect:
         serializedVersion: 2
         x: 1789
@@ -1117,7 +1117,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_48
+      name: Arrow
       rect:
         serializedVersion: 2
         x: 217

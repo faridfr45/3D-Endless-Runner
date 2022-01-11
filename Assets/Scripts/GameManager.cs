@@ -45,11 +45,18 @@ public class GameManager : MonoBehaviour
     public float scoreRate;
     public float scoreValue;
     public float highScore;
+
+    [Header("Power Up")]
+    public bool senterCanSpawn;
+
+    private bool canSaveGold = true;
+
     
     private void Start() {
         coinValue = 0;
         scoreValue = 0;
 
+        senterCanSpawn = true;
         gameOver = false;
         isGameStarted = false;
         Time.timeScale = 1;
@@ -69,7 +76,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             finishScore.text = Mathf.Round(scoreValue).ToString();
             setHighScore();
-            highScoreText.text = Mathf.Round(highScore).ToString();
+            AddGold();
+            highScoreText.text = Mathf.Round(DataManager.highScoreValue).ToString();
             gameOverPanel.SetActive(true);
             HideUI();
         }
@@ -80,9 +88,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void AddGold(){
+        if(canSaveGold){
+            DataManager.coinValue += coinValue;
+            canSaveGold = false;
+        }
+    }
+
     private void setHighScore(){
-        if(scoreValue > highScore){
-            highScore = scoreValue;
+        if(scoreValue > DataManager.highScoreValue){
+            DataManager.highScoreValue = scoreValue;
         }
     }
 

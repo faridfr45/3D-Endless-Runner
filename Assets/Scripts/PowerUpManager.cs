@@ -30,6 +30,7 @@ public class PowerUpManager : MonoBehaviour
                 senter.isActive = false;
                 modelSenter.SetActive(false);
                 senter.timer = 0;
+                GameManager.Instance.senterCanSpawn = true;
             }
         }
     }
